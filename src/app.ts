@@ -9,9 +9,9 @@ import  mongoose  from "mongoose";
 import { DB_URL } from "./config";
 
 export const main_app: FastifyPluginAsync =async (app) => {
-//   await  mongoose.connect(DB_URL).then(()=>{
-//       console.log(`Connected to ${DB_URL}`)
-//   })
+  await  mongoose.connect(DB_URL).then(()=>{
+      console.log(`Connected to ${DB_URL}`)
+  })
     app.register(fastifyStatic,{
         root: path.join(__dirname, "../public"),
         prefix: "/staticFiles/",
@@ -25,10 +25,10 @@ export const main_app: FastifyPluginAsync =async (app) => {
         layout: "./views/layouts/main.hbs",
         options:{
             partials:{
-             //   ingrediente:'/views/partials/ingrediente.hbs',
-               // receta:'/views/partials/receta.hbs',
+                entry:'/views/partials/entry.hbs',
+                category:'/views/partials/category.hbs',
                 menu:'views/partials/menu.hbs',
-                //add_ingredient:'views/partials/forms/add_ingredient.hbs',
+                add_entry:'views/partials/forms/add_entry.hbs',
                 add_category:'views/partials/forms/add_category.hbs'
             }
         }

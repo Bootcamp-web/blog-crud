@@ -1,0 +1,16 @@
+<div class="card" style="margin: 10px">
+	<div class="card-body">
+		<h5 class="card-title">Category: {{category.name}}</h5>
+		<p class="card-text">Benefits: {{category.benefits}}</p>
+		<div class="row">
+			{{#each entries}}
+			<div class="col">
+				{{>entry}}
+			</div>
+			{{/each}}
+		</div>
+		<div style="margin-top: 50px;">
+			{{>add_entry category}}
+		</div>
+	</div>
+</div>

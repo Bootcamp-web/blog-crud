@@ -1,6 +1,6 @@
 
 import  mongoose,{Schema, Document} from "mongoose"
-//import { Entry } from "./Entry";
+import { Entry } from "./Entry";
 
 
 export interface Category extends Document{
@@ -17,9 +17,9 @@ const schema = new Schema(
         timestamps:true
 });
 
-// export const getIngredientes = async (idReceta: string) => {
-//     const ingredientes = await Entry.find({ receta: idReceta }).lean();
-//     return ingredientes
-// };
+export const getEntry = async (idReceta: string) => {
+    const entries = await Entry.find({ receta: idReceta }).lean();
+    return entries
+};
 
 export const Category = mongoose.model<Category>("Category", schema)
