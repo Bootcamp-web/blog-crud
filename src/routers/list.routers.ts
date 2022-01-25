@@ -12,6 +12,11 @@ type MyRequest = FastifyRequest<{
 }>
 
 
+const deleteall = async (request: MyRequest, reply:FastifyReply)=>{
+    await Category.deleteMany();
+    reply.redirect("/")
+}
+
 const add = (request: FastifyRequest, reply:FastifyReply)=>{
     const data ={title: "Add your category"}
     
@@ -52,5 +57,5 @@ export  const list_router: FastifyPluginAsync  = async(app)=>{
     app.post("/form_entry",form_entry)
     app.post("/form_category",form_category)
     app.get("/add",add)
-    //app.get("/deleteall",deleteall)
+    app.get("/deleteall",deleteall)
 }
