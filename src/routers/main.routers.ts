@@ -1,7 +1,10 @@
 import { FastifyPluginAsync,  FastifyRequest, FastifyReply  } from "fastify"
 import { getEntry, Category } from "../models/Categories";
+import { Entry } from "../models/Entry";
 
-
+type Myrequest = FastifyRequest<{
+    Querystring: { id: string }
+}>
 
 const home = async (request: FastifyRequest, reply: FastifyReply) => {
     const categories = await Category.find().lean();
@@ -22,8 +25,15 @@ const home = async (request: FastifyRequest, reply: FastifyReply) => {
     reply.view("views/index", data);
 }
 
+const remove = async(request: Myrequest, reply: FastifyReply) => {
+    const { id } = request.query
+    console.log(`Deleted entry ${id}..`)
+    await Entry.findByIdAndDelete(id)
+    reply.redirect("/")
+}
+
 
 export const main_router:FastifyPluginAsync =async (app) => {
     app.get("/", home)
-    //app.get("/remove",remove)
+    app.get("/remove",remove)
 }
