@@ -17,8 +17,9 @@ const schema = new Schema(
         timestamps:true
 });
 
-export const getEntry = async (idReceta: string) => {
-    const entries = await Entry.find({ receta: idReceta }).lean();
+export const getEntry = async (idCategory: string) => {
+    const entries = await Entry.find({ category: idCategory }).lean();
+    console.log("Dentro de detEntry",entries)
     return entries
 };
 

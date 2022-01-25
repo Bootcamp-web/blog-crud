@@ -20,9 +20,6 @@ const schema = new Schema(
         timestamps:true
 });
 
-// export const getIngredientes = async (idReceta: string) => {
-//     const ingredientes = await Entry.find({ receta: idReceta }).lean();
-//     return ingredientes
-// };
+
 
 export const Entry = mongoose.model<Entry>("Entry", schema)
