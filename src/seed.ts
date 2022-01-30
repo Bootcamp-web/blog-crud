@@ -2,6 +2,7 @@ import  mongoose,{Schema, Document} from "mongoose"
 import { Entry } from "./models/Entry"
 import { DB_URL } from "./config"
 import { Category } from "./models/Categories"
+import {UserModel}  from "./models/User.model"
 
 
 
@@ -34,6 +35,7 @@ const createCategory = async(creator_name:string)=>{
     try{
         await Entry.collection.drop();
         await Category.collection.drop();
+       
     }catch(error){
         console.log("There are no items to drop from db")
     }

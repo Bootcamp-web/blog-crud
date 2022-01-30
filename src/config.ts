@@ -10,8 +10,8 @@ const checkEnv = (envVar: string) => {
 };
 
 
-// export const PORT: number = parseInt(checkEnv("PORT"));
-// export const DB_URL: string = checkEnv("DB_URL");
-
-export const PORT = (process.env.PORT || 3000) as number;
-export const DB_URL = (process.env.DB_URL || "mongodb://localhost:27017/blog") as string
+export const PORT: number = parseInt(checkEnv("PORT"));
+export const DB_URL: string = checkEnv("DB_URL");
+//docker
+// export const PORT = (process.env.PORT || 3000) as number;
+// export const DB_URL = (process.env.DB_URL || "mongodb://localhost:27017/blog") as string
