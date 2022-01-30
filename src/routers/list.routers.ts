@@ -1,7 +1,7 @@
 import {FastifyPluginAsync, FastifyRequest, FastifyReply} from "fastify"
 import {Category} from "../models/Categories"
 import { Entry } from "../models/Entry"
-//import {Entry} from "../models/Entry"
+
 
 
 type MyRequest = FastifyRequest<{
@@ -14,6 +14,8 @@ type MyRequest = FastifyRequest<{
 
 const deleteall = async (request: MyRequest, reply:FastifyReply)=>{
     await Category.deleteMany();
+   // try()catch()
+    await Entry.deleteMany();
     reply.redirect("/")
 }
 

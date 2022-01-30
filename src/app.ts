@@ -9,7 +9,7 @@ import  mongoose  from "mongoose";
 import { DB_URL } from "./config";
 
 export const main_app: FastifyPluginAsync =async (app) => {
-  await  mongoose.connect(DB_URL).then(()=>{
+    mongoose.connect(DB_URL).then(()=>{
       console.log(`Connected to ${DB_URL}`)
   })
     app.register(fastifyStatic,{
