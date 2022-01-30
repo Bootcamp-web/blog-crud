@@ -52,7 +52,8 @@ export const main_app: FastifyPluginAsync =async (app) => {
                 category:'/views/partials/category.hbs',
                 menu:'views/partials/menu.hbs',
                 add_entry:'views/partials/forms/add_entry.hbs',
-                add_category:'views/partials/forms/add_category.hbs'
+                add_category:'views/partials/forms/add_category.hbs',
+                logo:'/views/partials/logo.hbs',
             }
         }
     });

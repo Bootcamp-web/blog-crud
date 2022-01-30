@@ -36,4 +36,7 @@ const remove = async(request: Myrequest, reply: FastifyReply) => {
 export const main_router:FastifyPluginAsync =async (app) => {
     app.get("/", home)
     app.get("/remove",remove)
+    app.get("/error",async (request,reply)=>{
+        return  reply.view("views/error.hbs");
+    })
 }
