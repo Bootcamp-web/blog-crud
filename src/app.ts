@@ -5,6 +5,7 @@ import path from "path";
 import pointOfView from "point-of-view";
 import { main_router } from "./routers/main.routers";
 import { list_router } from "./routers/list.routers";
+import { auth_router } from "./routers/auth_routers";
 import { middlewareEnviroment } from "./midlewares/enviroment.middleware"
 import { sessionEnviroment } from "./midlewares/cookie.middleware"
 import  mongoose  from "mongoose";
@@ -86,6 +87,7 @@ export const main_app: FastifyPluginAsync =async (app) => {
   
     app.register(formBodyPlugin);
     app.register(main_router);
+    app.register(auth_router,{prefix: "/auth"});
     app.register(list_router, { prefix: "/list" });
     app.register(middlewareEnviroment);
     app.register(sessionEnviroment);
