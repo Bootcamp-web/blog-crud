@@ -11,13 +11,11 @@ export const auth_router: FastifyPluginAsync = async (app) => {
     app.get("/signup", async (request, reply) => {
         return reply.view("views/auth/signup.hbs")
     })
-    // app.get("/login", async (request, reply) => {
-    //     return reply.view("views/auth/login.hbs")
-    // })
+    app.get("/login", async (request, reply) => {
+        return reply.view("views/auth/login.hbs")
+    })
 
-    // type MyRequest = FastifyRequest<{
-    //     Body: { username: string; password: string }
-    // }>;
+  
 
     app.post("/signup", async (request: MyRequest, reply: FastifyReply) => {
         const { username, password } = request.body;
