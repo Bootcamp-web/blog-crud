@@ -8,7 +8,8 @@
     "dev": "ts-node-dev src/server.ts",
     "build": "tsc",
     "seed": "ts-node-dev src/seed.ts",
-    "test": "ava -v"
+    "test": "ava -v",
+    "seed-d":"node dist/seed.js"
   },
   "repository": {
     "type": "git",
