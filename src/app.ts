@@ -16,6 +16,7 @@ import { fastifyMongodb } from "fastify-mongodb";
 import cookie, { FastifyCookieOptions } from "fastify-cookie";
 import MongoStore from "connect-mongo";
 import fastifySession from "@fastify/session";
+import { preparePassport } from "./passport";
 
 
 declare module "fastify" {
@@ -86,6 +87,17 @@ export const main_app: FastifyPluginAsync =async (app) => {
         request.sessionStore.set(session.sessionId, session, next);
     })
   
+    await preparePassport(app);
+
+    app.addHook("preHandler", async (req, res) => {
+        const user = req.user;
+        (res as any).locals = {
+            user,
+        }
+    });
+
+
+
     app.register(formBodyPlugin);
     app.register(main_router);
     app.register(auth_router,{prefix: "/auth"});

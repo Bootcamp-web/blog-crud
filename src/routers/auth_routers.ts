@@ -1,6 +1,6 @@
 import { FastifyPluginAsync, FastifyReply, FastifyRequest } from "fastify"
 import { createUser } from "../domain/user.domain";
-//import fastifyPassport from "fastify-passport"
+import fastifyPassport from "fastify-passport"
 
 
 type MyRequest = FastifyRequest<{
@@ -24,11 +24,25 @@ export const auth_router: FastifyPluginAsync = async (app) => {
             console.log(`Created user ${newUser.username} with objectid ${newUser._id}`)
 
             // Auto login the user in session
-           // await request.logIn(newUser)
+           await request.logIn(newUser)
 
             reply.redirect("/");
         } catch (error) {
             return reply.redirect("/error")
         }
     });
+    app.post("/login", {
+        preValidation: fastifyPassport.authenticate("local", {
+            session: true
+        })
+    }, async (request: MyRequest, reply: FastifyReply) => {
+        console.log("SUCCESS!");
+        return reply.redirect("/")
+    })
+
+
+    app.get("/logout", async (req, res) => {
+        req.logOut();
+        res.redirect("/")
+    })
 }
