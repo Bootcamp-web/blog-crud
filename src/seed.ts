@@ -42,7 +42,7 @@ const createCategory = async(creator_name:string)=>{
  
     
     await createCategory("Patricia");
-    // await crearTortilla("Valencia", [-0.37739, 39.46975]);
+    
 
     await mongoose.disconnect().then(()=>{
         console.log("bye")

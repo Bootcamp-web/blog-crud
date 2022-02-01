@@ -11,6 +11,6 @@ const server = fastify({
 
 
 server.register(main_app)
-
-//server.listen(PORT, "0.0.0.0") docker
-server.listen(PORT)
+//server.listen(PORT)
+//docker
+server.listen(PORT, "0.0.0.0")
