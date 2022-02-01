@@ -31,7 +31,6 @@ const createCategory = async(creator_name:string)=>{
 
 (async()=>{
     await mongoose.connect(DB_URL).then(() => console.log(`Conected to ${DB_URL}`))
-
     try{
         await Entry.collection.drop();
         await Category.collection.drop();
